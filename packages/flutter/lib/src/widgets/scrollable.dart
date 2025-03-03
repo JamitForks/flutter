@@ -928,7 +928,7 @@ class ScrollableState extends State<Scrollable> with TickerProviderStateMixin, R
       if (_physics != null && !_physics!.shouldAcceptUserOffset(position)) {
         // The handler won't use the `event`, so allow the platform to trigger
         // any default native actions.
-        event.respond(allowPlatformDefault: true);
+        event.respond(allowPlatformDefault: false);
         return;
       }
       final double delta = _pointerSignalEventDelta(event);
@@ -940,7 +940,7 @@ class ScrollableState extends State<Scrollable> with TickerProviderStateMixin, R
       }
       // The `event` won't result in a scroll, so allow the platform to trigger
       // any default native actions.
-      event.respond(allowPlatformDefault: true);
+      event.respond(allowPlatformDefault: false);
     } else if (event is PointerScrollInertiaCancelEvent) {
       position.pointerScroll(0);
       // Don't use the pointer signal resolver, all hit-tested scrollables should stop.
